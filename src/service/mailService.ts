@@ -10,6 +10,8 @@ export const sendEmail = async (email: string, message: string, name: string) =>
       user: process.env.EMAIL_SERVER_USER,
       pass: process.env.EMAIL_SERVER_PASSWORD,
     },
+    logger: true,
+    debug: true,
   });
 
   console.log('process.env.EMAIL_SERVER_HOST = ', process.env.EMAIL_SERVER_HOST);
