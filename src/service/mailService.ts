@@ -21,7 +21,7 @@ export const sendEmail = async (email: string, message: string, name: string) =>
   console.log('lets send an email in here');
 
   // verify connection configuration
-  transporter.verify(function (error, success) {
+  await transporter.verify(function (error, success) {
     if (error) {
       console.log(error);
     } else {
