@@ -34,7 +34,6 @@ export const SendAMessageForm = () => {
     values.email = DOMPurify.sanitize(values.email);
     values.message = DOMPurify.sanitize(values.message);
     values.name = DOMPurify.sanitize(values.name);
-    console.log('values = ', values);
     try {
       const apiRes = await fetch('/api/sendEmail', {
         method: 'POST',
