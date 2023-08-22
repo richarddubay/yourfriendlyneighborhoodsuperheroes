@@ -20,6 +20,15 @@ export const sendEmail = async (email: string, message: string, name: string) =>
   console.log('process.env.EMAIL_SERVER_PASSWORD = ', process.env.EMAIL_SERVER_PASSWORD);
   console.log('lets send an email in here');
 
+  // verify connection configuration
+  transporter.verify(function (error, success) {
+    if (error) {
+      console.log(error);
+    } else {
+      console.log('Server is ready to take our messages');
+    }
+  });
+
   await transporter.sendMail({
     from: process.env.EMAIL_FROM,
     to: process.env.EMAIL_SERVER_USER,
