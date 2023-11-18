@@ -14,26 +14,17 @@ export const sendEmail = async (email: string, message: string, name: string) =>
     debug: true,
   });
 
-  console.log('transporter = ', transporter);
-  console.log('process.env.EMAIL_SERVER_HOST = ', process.env.EMAIL_SERVER_HOST);
-  console.log('process.env.EMAIL_SERVER_PORT = ', process.env.EMAIL_SERVER_PORT);
-  console.log('process.env.EMAIL_SERVER_USER = ', process.env.EMAIL_SERVER_USER);
-  console.log('process.env.EMAIL_SERVER_PASSWORD = ', process.env.EMAIL_SERVER_PASSWORD);
-  console.log('lets send an email in here');
-
   // verify connection configuration
-  await transporter.verify(function (error, success) {
+  await transporter.verify(async function (error, success) {
     if (error) {
       console.log(error);
     } else {
-      console.log('Server is ready to take our messages');
+      await transporter.sendMail({
+        from: process.env.EMAIL_FROM,
+        to: process.env.EMAIL_SERVER_USER,
+        subject: `Website form submission from ${name}`,
+        html: `<div>From: ${name}</div><div>Email: ${email}</div><div>Message: ${message}</div>`,
+      });
     }
-  });
-
-  await transporter.sendMail({
-    from: process.env.EMAIL_FROM,
-    to: process.env.EMAIL_SERVER_USER,
-    subject: `Website form submission from ${name}`,
-    html: `<div>From: ${name}</div><div>Email: ${email}</div><div>Message: ${message}</div>`,
   });
 };

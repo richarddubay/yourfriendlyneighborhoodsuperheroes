@@ -44,18 +44,13 @@ export const SendAMessageForm = () => {
 
       const response = await apiRes.json();
       console.log('response = ', response);
+      if (apiRes.ok) {
+        form.reset();
+      }
     } catch (error) {
       console.error(error);
     }
   }
-
-  useEffect(() => {
-    if (form.formState.isSubmitSuccessful) {
-      console.log('The form should reset.');
-      form.reset();
-      console.log('form.reset() was called.');
-    }
-  }, [form]);
 
   return (
     <Form {...form}>
