@@ -62,7 +62,7 @@ export const SendAMessageForm = () => {
             <FormItem>
               <FormLabel>Name</FormLabel>
               <FormControl>
-                <Input placeholder='Your Name' {...field} />
+                <Input autoComplete='name' placeholder='Your Name' {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -75,7 +75,7 @@ export const SendAMessageForm = () => {
             <FormItem>
               <FormLabel>Email</FormLabel>
               <FormControl>
-                <Input placeholder='Your email address' {...field} />
+                <Input autoComplete='email' placeholder='Your email address' {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
