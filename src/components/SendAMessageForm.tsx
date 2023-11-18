@@ -12,9 +12,7 @@ import DOMPurify from 'dompurify';
 
 const formSchema = z.object({
   email: z.string().email({ message: 'Invalid email address' }),
-  message: z.string().max(1000, {
-    message: 'Your message cannot be longer than 1000 characters.',
-  }),
+  message: z.string(),
   name: z.string().min(2, {
     message: 'Name is required and must be at least 2 characters.',
   }),
@@ -97,7 +95,6 @@ export const SendAMessageForm = () => {
               <FormControl>
                 <Textarea placeholder='Your message to YFNS' className='resize-none' {...field} />
               </FormControl>
-              <FormDescription>Kindly keep your message to 1000 characters please!</FormDescription>
               <FormMessage />
             </FormItem>
           )}
