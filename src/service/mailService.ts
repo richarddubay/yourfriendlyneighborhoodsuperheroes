@@ -15,16 +15,19 @@ export const sendEmail = async (email: string, message: string, name: string) =>
   });
 
   // verify connection configuration
-  await transporter.verify(async function (error, success) {
+  await transporter.verify(function (error, success) {
     if (error) {
       console.log(error);
     } else {
-      await transporter.sendMail({
-        from: process.env.EMAIL_FROM,
-        to: process.env.EMAIL_SERVER_USER,
-        subject: `Website form submission from ${name}`,
-        html: `<div>From: ${name}</div><div>Email: ${email}</div><div>Message: ${message}</div>`,
-      });
+      console.log('success = ', success);
+      console.log('Server is ready to take our messages');
     }
+  });
+
+  await transporter.sendMail({
+    from: process.env.EMAIL_FROM,
+    to: process.env.EMAIL_SERVER_USER,
+    subject: `Website form submission from ${name}`,
+    html: `<div>From: ${name}</div><div>Email: ${email}</div><div>Message: ${message}</div>`,
   });
 };
