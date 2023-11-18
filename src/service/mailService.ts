@@ -14,7 +14,7 @@ export const sendEmail = async (email: string, message: string, name: string) =>
     debug: true,
   });
 
-  console.log('transporter = ', transporter);
+  // console.log('transporter = ', transporter);
   console.log('process.env.EMAIL_SERVER_HOST = ', process.env.EMAIL_SERVER_HOST);
   console.log('process.env.EMAIL_SERVER_PORT = ', process.env.EMAIL_SERVER_PORT);
   console.log('process.env.EMAIL_SERVER_USER = ', process.env.EMAIL_SERVER_USER);
